@@ -1,4 +1,9 @@
 package com.example.myweather
 
-class WeatherViewModel {
+import androidx.lifecycle.ViewModel
+
+class WeatherViewModel: ViewModel() {
+    fun getData(city:String){
+
+    }
 }
