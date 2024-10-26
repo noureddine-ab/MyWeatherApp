@@ -14,12 +14,14 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.myweather.API.NetworkResponse
 
 @Composable
 fun WeatherPage(viewModel: WeatherViewModel) {
@@ -27,6 +29,9 @@ fun WeatherPage(viewModel: WeatherViewModel) {
     var city by remember {
         mutableStateOf("")
     }
+
+    val weatherResult = viewModel.weatherResult.observeAsState()
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -53,12 +58,20 @@ fun WeatherPage(viewModel: WeatherViewModel) {
             IconButton(onClick = {
                 viewModel.getData(city)
             }) {
-                Icon(imageVector = Icons.Default.Search,
-                contentDescription = "Search for any location"
-            )
-            }
-
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search for any location"
+                )
             }
 
         }
+
+        when(weatherResult.value){
+            is NetworkResponse.Error -> TODO()
+            NetworkResponse.Loading -> TODO()
+            is NetworkResponse.Success -> TODO()
+            null -> TODO()
+        }
+
+    }
 }
