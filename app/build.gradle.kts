@@ -65,6 +65,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
 
     implementation("androidx.compose.runtime:runtime-livedata:1.7.4")
+    implementation("io.coil-kt.coil3:coil-compose:3.0.0-rc01")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
